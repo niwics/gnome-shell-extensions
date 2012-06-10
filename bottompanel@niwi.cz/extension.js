@@ -204,7 +204,7 @@ function init(extensionMeta) {
         else if (binding == 'switch_to_workspace_right')
            this.actionMoveWorkspaceRight();
     };
-
+/*
     WindowManager.WindowManager.prototype._reset = function() {
         this.setKeybindingHandler('switch_to_workspace_left', Lang.bind(this, this._showWorkspaceSwitcher));
         this.setKeybindingHandler('switch_to_workspace_right', Lang.bind(this, this._showWorkspaceSwitcher));
@@ -212,7 +212,7 @@ function init(extensionMeta) {
         this.setKeybindingHandler('switch_to_workspace_down', Lang.bind(this, this._showWorkspaceSwitcher));
 
         this._workspaceSwitcherPopup = null;
-    };
+    };*/
 }
 
 let bottomPanel = null;
@@ -224,7 +224,7 @@ function enable() {
     WindowManager.WindowManager.prototype._showWorkspaceSwitcher =
         myShowWorkspaceSwitcher;
 
-    Main.wm._reset();
+    //Main.wm._reset();
 
     bottomPanel = new BottomPanel();
     bottomPanel.relayout();
