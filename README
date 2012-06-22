@@ -1,0 +1,16 @@
+gnome-shell-extensions
+
+======================
+
+Extensions for Gnome Shell 3.4, forked from Linux Mint (MGSE - http://github.com/linuxmint/MGSE).
+
+- Bottom Panel adds to the screen panel with DesktopSwitcher and WorkspaceSwitcher
+- Window List adds to this panel "classical" buttons for switching windows
+
+
+As Linux Mint started Cinnamon and extensions from Mint doesn't work in Gnome Shell 3.4, I forked and modified two of them for Gnome Shell 3.4.
+
+INSTALLATION
+1. Copy this two extensions to the directory /usr/share/gnome-shell/extensions
+2. Enable them (using GnomeTweakTool). Bottom Panel has to be enabled first.
+3. Restart Gnome Shell (Alt+F2 and the command "r")
