@@ -141,11 +141,11 @@ BottomPanel.prototype = {
         item.actor.get_parent().remove_actor(item.actor);
         
         if (item==Main.panel._mintMenu) {
-            this.leftBox.insert_actor(item.actor, 0);
+            this.leftBox.add(item.actor);
         }
         else if (item==Main.panel._mintWindowList) {
             let _children = this.leftBox.get_children(); 
-            this.leftBox.insert_actor(item.actor, _children.length);
+            this.leftBox.add(item.actor);
         }
         else {
             this.leftBox.add(item.actor);
@@ -258,7 +258,7 @@ function disable() {
     WindowManager.WindowManager.prototype._showWorkspaceSwitcher =
         origShowWorkspaceSwitcher;
 
-    Main.wm._reset();
+    Main.wm._reset();// TODO
 
     if ( bottomPanel ) {
         Main.layoutManager.removeChrome(bottomPanel.actor);

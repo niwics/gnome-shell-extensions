@@ -1,4 +1,5 @@
 const Clutter = imports.gi.Clutter;
+const GLib = imports.gi.GLib;
 const Lang = imports.lang;
 const Shell = imports.gi.Shell;
 const St = imports.gi.St;
@@ -244,12 +245,12 @@ AppMenuButton.prototype = {
     },
     
     _onButtonRelease: function(actor, event) {
-        if ( Shell.get_event_state(event) & Clutter.ModifierType.BUTTON1_MASK ) {
+        if ( event.get_state() & Clutter.ModifierType.BUTTON1_MASK ) {
             if ( this.rightClickMenu.isOpen ) {
                 this.rightClickMenu.toggle();                
             }
             this._windowHandle(false);
-        } else if (Shell.get_event_state(event) & Clutter.ModifierType.BUTTON3_MASK) {
+        } else if (event.get_state() & Clutter.ModifierType.BUTTON3_MASK) {
             if (!this.rightClickMenu.isOpen) {
                 // Setting the max-height won't do any good if the minimum height of the
                 // menu is higher then the screen; it's useful if part of the menu is
@@ -261,7 +262,7 @@ AppMenuButton.prototype = {
             }
             this.rightClickMenu.mouseEvent = event;
             this.rightClickMenu.toggle();   
-        }   
+        }
     },
 
     _windowHandle: function(fromDrag){
@@ -370,12 +371,12 @@ AppMenuButton.prototype = {
 
         let [minWidth, minHeight, naturalWidth, naturalHeight] = this._iconBox.get_preferred_size();
 
-        let direction = this.actor.get_direction();
+        let direction = this.actor.get_text_direction();
 
         let yPadding = Math.floor(Math.max(0, allocHeight - naturalHeight) / 2);
         childBox.y1 = yPadding;
         childBox.y2 = childBox.y1 + Math.min(naturalHeight, allocHeight);
-        if (direction == St.TextDirection.LTR) {
+        if (direction == Clutter.TextDirection.LTR) {
             childBox.x1 = 3;
             childBox.x2 = childBox.x1 + Math.min(naturalWidth, allocWidth);
         } else {
@@ -392,7 +393,7 @@ AppMenuButton.prototype = {
         childBox.y1 = yPadding;
         childBox.y2 = childBox.y1 + Math.min(naturalHeight, allocHeight);
 
-        if (direction == St.TextDirection.LTR) {
+        if (direction == Clutter.TextDirection.LTR) {
             childBox.x1 = Math.floor(iconWidth + 5);
             childBox.x2 = Math.min(childBox.x1 + naturalWidth, allocWidth);
         } else {
@@ -401,7 +402,7 @@ AppMenuButton.prototype = {
         }
         this._label.allocate(childBox, flags);
 
-        if (direction == St.TextDirection.LTR) {
+        if (direction == Clutter.TextDirection.LTR) {
             childBox.x1 = Math.floor(iconWidth / 2) + this._label.width;
             childBox.x2 = childBox.x1 + this._spinner.actor.width;
             childBox.y1 = box.y1;
@@ -459,7 +460,7 @@ WindowList.prototype = {
     },
     
     _refreshItems: function() {
-        this.actor.destroy_children();
+        this.actor.destroy_all_children();
         this._windows = new Array();
 
         let metaWorkspace = global.screen.get_active_workspace();
@@ -579,7 +580,7 @@ WindowList.prototype = {
         }
     },
     
-    _allocateBoxes: function(container, box, flags) {	
+    _allocateBoxes: function(container, box, flags) {
 		let allocWidth = box.x2 - box.x1;
 		let allocHeight = box.y2 - box.y1;
 		let [leftMinWidth, leftNaturalWidth] = this._leftBox.get_preferred_width(-1);
@@ -702,8 +703,8 @@ function init(extensionMeta) {
     }
     else {
         bottomPosition = false;
-    }    
-    imports.gettext.bindtextdomain('gnome-shell-extensions', extensionMeta.localedir);        
+    }
+    imports.gettext.bindtextdomain('gnome-shell-extensions', GLib.build_filenamev([extensionMeta.path, 'locale']));
     windowList = new WindowList();
     button = new ShowDesktopButton();
     appMenu = Main.panel._appMenu;   

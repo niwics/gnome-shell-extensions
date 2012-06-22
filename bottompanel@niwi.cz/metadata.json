@@ -1,7 +1,7 @@
 {
 "shell-version": ["3.4"], 
 "uuid": "bottompanel@niwi.cz", 
-"name": "Bottom Panel",
+"name": "Niwi Bottom Panel",
 "description": "Add a panel to the bottom of the screen", 
 "url": "http://github.com/linuxmint/mgse"
 }
