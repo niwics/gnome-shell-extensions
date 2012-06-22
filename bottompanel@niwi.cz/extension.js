@@ -1,3 +1,7 @@
+/*
+ * Author: niwi, niwi.cz, 2012
+ * GNU General Public License, fork from https://github.com/linuxmint/MGSE
+ */
 const MessageTray = imports.ui.messageTray;
 const WindowManager = imports.ui.windowManager;
 const St = imports.gi.St;
@@ -204,7 +208,7 @@ function init(extensionMeta) {
         else if (binding == 'switch_to_workspace_right')
            this.actionMoveWorkspaceRight();
     };
-/*
+
     WindowManager.WindowManager.prototype._reset = function() {
         this.setKeybindingHandler('switch_to_workspace_left', Lang.bind(this, this._showWorkspaceSwitcher));
         this.setKeybindingHandler('switch_to_workspace_right', Lang.bind(this, this._showWorkspaceSwitcher));
@@ -212,7 +216,7 @@ function init(extensionMeta) {
         this.setKeybindingHandler('switch_to_workspace_down', Lang.bind(this, this._showWorkspaceSwitcher));
 
         this._workspaceSwitcherPopup = null;
-    };*/
+    };
 }
 
 let bottomPanel = null;

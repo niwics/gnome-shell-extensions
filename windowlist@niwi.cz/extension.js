@@ -1,3 +1,7 @@
+/*
+ * Author: niwi, niwi.cz, 2012
+ * GNU General Public License, fork from https://github.com/linuxmint/MGSE
+ */
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;

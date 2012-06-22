@@ -1,7 +1,7 @@
 {
-"uuid": "windowlist@niwi.cz",
-"name": "Window List by niwi",
-"description": "Adds a window list to the panel",
 "shell-version": [ "3.4" ],
-"url": "http://github.com/linuxmint/mgse-windowlist"
+"uuid": "windowlist@niwi.cz",
+"name": "Niwi Window List",
+"description": "Adds a window list to the panel",
+"url": "http://github.com/niwics/gnome-shell-extensions"
 }
