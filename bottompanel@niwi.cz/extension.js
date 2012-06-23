@@ -216,13 +216,13 @@ function init(extensionMeta) {
         this.setKeybindingHandler('switch_to_workspace_down', Lang.bind(this, this._showWorkspaceSwitcher));
 
         this._workspaceSwitcherPopup = null;
-    };
+    }
 }
 
 let bottomPanel = null;
 
 function enable() {
-    global.screen.override_workspace_layout(Meta.ScreenCorner.TOPLEFT, false, 1, -1);
+    //global.screen.override_workspace_layout(Meta.ScreenCorner.TOPLEFT, false, 1, -1);
 
     MessageTray.MessageTray.prototype._showTray = myShowTray;
     WindowManager.WindowManager.prototype._showWorkspaceSwitcher =
@@ -256,7 +256,7 @@ function enable() {
 }
 
 function disable() {
-    global.screen.override_workspace_layout(Meta.ScreenCorner.TOPLEFT, false, -1, 1);
+    //global.screen.override_workspace_layout(Meta.ScreenCorner.TOPLEFT, false, -1, 1);
 
     MessageTray.MessageTray.prototype._showTray = origShowTray;
     WindowManager.WindowManager.prototype._showWorkspaceSwitcher =
